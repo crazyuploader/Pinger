@@ -19,6 +19,3 @@ jobs:
 
       - name: Run ShellCheck
         run: shellcheck *.sh
-
-      - name: Run Script
-        run: ./mtr.sh
