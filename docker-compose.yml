@@ -5,4 +5,4 @@ services:
     restart: unless-stopped
     container_name: "Pinger"
     volumes:
-      - "${PWD}/out:/pinger/out"
+      - "${PWD}/out/docker:/pinger/out"
