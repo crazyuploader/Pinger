@@ -1,11 +1,17 @@
 # Pinger
 
+> Run MTR script every 5 minutes!
+
 ## Usage
 
-Create a file named `servers.txt` in script's directory, and write server IP/domains per line.
+Add IPs/Domains to `servers.txt` file and Run Script with -
 
-Run Script with -
-
-```
+```bash
 ./mtr.sh
+```
+
+## Docker Compose
+
+```bash
+docker-compose up --build --detach
 ```
