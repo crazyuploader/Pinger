@@ -23,4 +23,4 @@ COPY servers.txt servers.txt
 
 RUN mkdir out
 
-CMD ["/bin/bash", "-c", "while true; do ./mtr.sh; sleep 10; done"]
+CMD ["/bin/bash", "-c", "while true; do ./mtr.sh; sleep 300; done"]
