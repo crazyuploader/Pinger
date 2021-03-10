@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  pinger:
+    build: .
+    restart: unless-stopped
+    container_name: "Pinger"
+    volumes:
+      - "${PWD}/out:/pinger/out"
