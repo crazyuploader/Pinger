@@ -1,0 +1,8 @@
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: docker build -t crazyuploader/pinger:latest .
+  displayName: "Docker Build"
+- script: ./mtr.sh
+  displayName: "Run Script"
