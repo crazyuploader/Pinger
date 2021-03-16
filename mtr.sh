@@ -11,8 +11,17 @@ __LOGDIR="/var/pinger"
 DATE=$(date "+%d%m%y")
 TIME=$(date "+%H%M%S")
 
+function PRINT_HOST() {
+    IP="$(dig +short A "${1}")"
+    if [[ -n "${IP}" ]]; then
+        echo "MTR for ${1} (${IP})"
+    else
+        echo "MTR for ${1}"
+    fi
+}
+
 function DO_MTR() {
-    echo "MTR for ${1}"
+    PRINT_HOST "${1}"
     mtr -wrzc 10 "${1}"
     echo ""
 }

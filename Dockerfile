@@ -5,7 +5,11 @@
 FROM alpine:3.13
 
 # Adding Required Package(s)
-RUN apk --no-cache add mtr bash alpine-conf
+RUN apk --no-cache add \
+    mtr \
+    bash \
+    alpine-conf \
+    bind-tools
 
 # Setting TimeZone to IST
 RUN setup-timezone -z Asia/Kolkata
