@@ -4,16 +4,20 @@ set -o pipefail
 
 # Shell Script to do MTR for a server(s) specified in "servers.txt" file
 
+__DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+__SERVERS="${__DIR}/servers.txt"
+__LOGDIR="/var/pinger"
+
 DATE=$(date "+%d%m%y")
 TIME=$(date "+%H%M%S")
 
 function DO_MTR() {
     echo "MTR for ${1}"
-    mtr -wrzc 25 "${1}"
+    mtr -wrzc 10 "${1}"
     echo ""
 }
 
-if [[ ! -f "servers.txt" ]]; then
+if [[ ! -f "${__SERVERS}" ]]; then
     echo "'servers.txt' file not found"
     echo "Exiting..."
     exit 1
@@ -25,15 +29,15 @@ if [[ -z "$(command -v mtr)" ]]; then
     exit 1
 fi
 
-if [[ ! -d "out" ]]; then
-    mkdir out
+if [[ ! -d "${__LOGDIR}" ]]; then
+    mkdir "${__LOGDIR}"
 fi
 
-if [[ ! -d "out/${DATE}" ]]; then
-    mkdir -p out/"${DATE}"
+if [[ ! -d "${__LOGDIR}/${DATE}" ]]; then
+    mkdir -p "${__LOGDIR}/${DATE}"
 fi
 
-SERVERS="$(cat servers.txt)"
+SERVERS="$(cat ${__SERVERS})"
 for SERVER in $SERVERS; do
-    DO_MTR "${SERVER}" | tee -a out/"${DATE}"/"${TIME}".log
+    DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${DATE}/${TIME}".log
 done

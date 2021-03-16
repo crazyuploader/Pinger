@@ -21,6 +21,8 @@ COPY mtr.sh mtr.sh
 
 COPY servers.txt servers.txt
 
-RUN mkdir out
+COPY cronjob /etc/crontabs/root
 
-CMD ["/bin/bash", "-c", "while true; do ./mtr.sh; sleep 300; done"]
+RUN mkdir /var/pinger
+
+CMD ["crond", "-f", "-d", "8"]
