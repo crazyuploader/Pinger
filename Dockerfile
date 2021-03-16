@@ -2,7 +2,7 @@
 # Created by Jugal Kishore -- 2021
 #
 # Using Base Image: Alpine
-FROM alpine
+FROM alpine:3.13
 
 # Adding Required Package(s)
 RUN apk --no-cache add mtr bash alpine-conf

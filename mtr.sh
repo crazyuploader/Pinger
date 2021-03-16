@@ -37,7 +37,7 @@ if [[ ! -d "${__LOGDIR}/${DATE}" ]]; then
     mkdir -p "${__LOGDIR}/${DATE}"
 fi
 
-SERVERS="$(cat ${__SERVERS})"
+SERVERS="$(cat "${__SERVERS}")"
 for SERVER in $SERVERS; do
     DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${DATE}/${TIME}".log
 done
