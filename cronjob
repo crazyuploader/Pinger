@@ -1,1 +1,1 @@
-*/10 * * * * /pinger/mtr.sh
+*/5 * * * * /pinger/mtr.sh
