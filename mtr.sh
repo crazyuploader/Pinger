@@ -9,7 +9,7 @@ __SERVERS="${__DIR}/servers.txt"
 __LOGDIR="/var/pinger"
 
 DATE=$(date "+%d%m%y")
-TIME=$(date "+%H%M%S")
+TIME=$(date "+%H%M")
 
 function PRINT_HOST() {
     IP="$(dig +short A "${1}")"
