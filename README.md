@@ -1,6 +1,6 @@
 # Pinger
 
-> Run MTR every 5 minutes!
+> Run MTR every X minutes!
 
 ## Usage
 
