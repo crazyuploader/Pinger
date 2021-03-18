@@ -8,7 +8,9 @@ __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __SERVERS="${__DIR}/servers.txt"
 __LOGDIR="/var/pinger"
 
-DATE=$(date "+%d%m%y")
+YEAR=$(date "+%Y")
+MONTH=$(date "+%b")
+DAY=$(date "+%d")
 TIME=$(date "+%H%M")
 
 function PRINT_HOST() {
@@ -42,11 +44,19 @@ if [[ ! -d "${__LOGDIR}" ]]; then
     mkdir "${__LOGDIR}"
 fi
 
-if [[ ! -d "${__LOGDIR}/${DATE}" ]]; then
-    mkdir -p "${__LOGDIR}/${DATE}"
+if [[ ! -d "${__LOGDIR}/${YEAR}" ]]; then
+    mkdir -p "${__LOGDIR}/${YEAR}"
+fi
+
+if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}" ]]; then
+    mkdir -p "${__LOGDIR}/${YEAR}/${MONTH}"
+fi
+
+if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
+    mkdir -p "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}"
 fi
 
 SERVERS="$(cat "${__SERVERS}")"
 for SERVER in $SERVERS; do
-    DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${DATE}/${TIME}".log
+    DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".log
 done
