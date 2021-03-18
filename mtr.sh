@@ -40,18 +40,6 @@ if [[ -z "$(command -v mtr)" ]]; then
     exit 1
 fi
 
-if [[ ! -d "${__LOGDIR}" ]]; then
-    mkdir "${__LOGDIR}"
-fi
-
-if [[ ! -d "${__LOGDIR}/${YEAR}" ]]; then
-    mkdir -p "${__LOGDIR}/${YEAR}"
-fi
-
-if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}" ]]; then
-    mkdir -p "${__LOGDIR}/${YEAR}/${MONTH}"
-fi
-
 if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
     mkdir -p "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}"
 fi
