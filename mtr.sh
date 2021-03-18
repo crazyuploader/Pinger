@@ -14,9 +14,13 @@ DAY=$(date "+%d")
 TIME=$(date "+%H%M")
 
 function PRINT_HOST() {
-    IP="$(dig +short A "${1}")"
-    if [[ -n "${IP}" ]]; then
-        echo "MTR for ${1} (${IP})"
+    OUTPUT="$(dig +short A "${1}")"
+    IPs=""
+    if [[ -n "${OUTPUT}" ]]; then
+        for IP in $OUTPUT; do
+            IPs+="${IP} "
+        done
+        echo "MTR for ${1} - ${IPs}"
     else
         echo "MTR for ${1}"
     fi
