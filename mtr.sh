@@ -28,7 +28,7 @@ function PRINT_HOST() {
 
 function DO_MTR() {
     PRINT_HOST "${1}"
-    mtr -wrzc 10 "${1}"
+    mtr -wrzbc 10 "${1}"
     echo ""
 }
 
