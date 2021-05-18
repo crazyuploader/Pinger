@@ -3,9 +3,5 @@ crazyuploader.ddns.net
 103.47.94.34
 quicksight.ap-south-1.amazonaws.com
 quicksight.ap-southeast-1.amazonaws.com
-mumbaispeedtest1.airtel.in
-speedtestggn1.airtel.in
-speedtestchn1.airtel.in
-75.2.66.166
 8.8.8.8
 1.1.1.1

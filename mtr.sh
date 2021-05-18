@@ -13,13 +13,12 @@ MONTH=$(date "+%b")
 DAY=$(date "+%d")
 TIME=$(date "+%H%M")
 
-function PRINT_HOST() {
-    echo "MTR for ${1}"
-}
-
 function DO_MTR() {
-    PRINT_HOST "${1}"
-    mtr -wrzbc 10 "${1}"
+    echo "## MTR for ${1}"
+    echo ""
+    echo "\`\`\`"
+    mtr -wrzbc 3 "${1}"
+    echo "\`\`\`"
     echo ""
 }
 
@@ -41,5 +40,5 @@ fi
 
 SERVERS="$(cat "${__SERVERS}")"
 for SERVER in $SERVERS; do
-    DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".log
+    DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
 done

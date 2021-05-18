@@ -4,5 +4,14 @@ services:
     build: .
     restart: unless-stopped
     container_name: "Pinger"
+    network_mode: host
     volumes:
       - "${PWD}/out/docker:/var/pinger"
+  server:
+    image: crazyuploader/markdown_server
+    restart: unless-stopped
+    container_name: "Markdown-Server"
+    ports:
+      - "${PORT}:80"
+    volumes:
+      - "${PWD}/out/docker:/markdown"
