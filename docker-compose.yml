@@ -7,11 +7,14 @@ services:
     network_mode: host
     volumes:
       - "${PWD}/out/docker:/var/pinger"
+    environment:
+      CRON_MINUTES: "${CRON_MINUTES}"
   server:
     image: crazyuploader/markdown_server
     restart: unless-stopped
     container_name: "Markdown-Server"
     ports:
-      - "${PORT}:80"
+      - "${HOST:-127.0.0.0}:${PORT:-8080}:80"
+      - "${HOST:-127.0.0.0}:35729:35729"
     volumes:
-      - "${PWD}/out/docker:/markdown"
+      - "${PWD}/out/docker:/markdown:ro"

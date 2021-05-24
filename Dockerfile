@@ -9,7 +9,8 @@ RUN apk --no-cache add \
     mtr \
     bash \
     alpine-conf \
-    bind-tools
+    bind-tools \
+    bash
 
 # Setting TimeZone to IST
 RUN setup-timezone -z Asia/Kolkata
@@ -25,8 +26,9 @@ COPY mtr.sh mtr.sh
 
 COPY servers.txt servers.txt
 
-COPY cronjob /etc/crontabs/root
+COPY helper.sh helper.sh
 
+# Creating Directory for logs
 RUN mkdir /var/pinger
 
-CMD ["crond", "-f", "-d", "8"]
+CMD [ "./helper.sh" ]

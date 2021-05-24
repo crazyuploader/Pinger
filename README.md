@@ -12,6 +12,8 @@ Add IPs/Domains to `servers.txt` file and Run Script with -
 
 ## Docker Compose
 
+Edit `.env` however you like to, and to finally run Pinger -
+
 ```bash
 docker-compose up --build --detach
 ```
