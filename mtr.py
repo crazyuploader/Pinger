@@ -39,8 +39,7 @@ def do_mtr(SERVER):
     PROCESSED = run_in_shell(command)
     if PROCESSED.returncode == 0:
         return bytes_to_string(PROCESSED.stdout)
-    else:
-        return ""
+    return ""
 
 
 TO_WRITE = ""
