@@ -5,12 +5,13 @@
 FROM alpine:3.13.5
 
 # Adding Required Package(s)
-RUN apk --no-cache add \
+RUN apk --no-cache --update add \
     mtr \
     bash \
     alpine-conf \
     bind-tools \
-    bash
+    bash \
+    python3
 
 # Setting TimeZone to IST
 RUN setup-timezone -z Asia/Kolkata
@@ -23,6 +24,8 @@ WORKDIR /pinger
 
 # Copy required file(s)
 COPY mtr.sh mtr.sh
+
+COPY mtr.py mtr.py
 
 COPY servers.txt servers.txt
 

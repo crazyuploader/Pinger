@@ -13,15 +13,6 @@ MONTH=$(date "+%b")
 DAY=$(date "+%d")
 TIME=$(date "+%H%M")
 
-function DO_MTR() {
-    echo "## MTR for ${1}"
-    echo ""
-    echo "\`\`\`"
-    mtr -wrzbc 3 "${1}"
-    echo "\`\`\`"
-    echo ""
-}
-
 if [[ ! -f "${__SERVERS}" ]]; then
     echo "'servers.txt' file not found"
     echo "Exiting..."
@@ -38,7 +29,5 @@ if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
     mkdir -p "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}"
 fi
 
-SERVERS="$(cat "${__SERVERS}")"
-for SERVER in $SERVERS; do
-    DO_MTR "${SERVER}" | tee -a "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
-done
+"$__DIR"/mtr.py
+mv out.md "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
