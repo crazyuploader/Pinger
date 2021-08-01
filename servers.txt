@@ -1,9 +1,9 @@
 crazyuploader.ddns.net
 103.47.95.14
 103.47.94.34
-45.119.239.215
-205.147.103.169
+innog.net
 quicksight.ap-south-1.amazonaws.com
 quicksight.ap-southeast-1.amazonaws.com
 8.8.8.8
 1.1.1.1
+75.2.9.108
