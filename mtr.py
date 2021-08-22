@@ -35,7 +35,7 @@ def bytes_to_string(BYTE):
 
 
 def do_mtr(SERVER):
-    command = f"mtr -wrzbc 3 {SERVER}"
+    command = f"mtr -wrzbc 3 -m 40 {SERVER}"
     PROCESSED = run_in_shell(command)
     if PROCESSED.returncode == 0:
         return bytes_to_string(PROCESSED.stdout)
