@@ -9,5 +9,6 @@ else
 fi
 echo "*/${CRON_MINUTES:-5} * * * * /pinger/mtr.sh" >> /etc/crontabs/root
 echo "Cron OK..."
+echo "System AS Number: $(curl --silent ifconfig.co/asn)"
 echo "Starting Pinger..."
 crond -f -d 8
