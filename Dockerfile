@@ -6,15 +6,20 @@ FROM alpine:3.14.1
 
 # Adding Required Package(s)
 RUN apk --no-cache --update add \
-    mtr \
-    bash \
     alpine-conf \
-    bind-tools \
     bash \
+    bash \
+    bind-tools \
+    curl \
+    mtr \
     python3
 
+# Run time variable(s)
+ARG TIME_ZONE
+
 # Setting TimeZone to IST
-RUN setup-timezone -z Asia/Kolkata
+RUN setup-timezone -z $TIME_ZONE && \
+    echo "TimeZone set to $TIME_ZONE"
 
 # Removing Stuff(s)
 RUN apk del alpine-conf

@@ -7,6 +7,7 @@ set -o pipefail
 __DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __SERVERS="${__DIR}/servers.txt"
 __LOGDIR="/var/pinger"
+__ASN="$(curl --silent ifconfig.co/asn)"
 
 YEAR=$(date "+%Y")
 MONTH=$(date "+%b")
@@ -25,9 +26,13 @@ if [[ -z "$(command -v mtr)" ]]; then
     exit 1
 fi
 
-if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
-    mkdir -p "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}"
+if [[ ! -d "${__LOGDIR}/${__ASN}/${YEAR}/${MONTH}/${DAY}" ]]; then
+    mkdir -p "${__LOGDIR}/${__ASN}/${YEAR}/${MONTH}/${DAY}"
 fi
 
 "$__DIR"/mtr.py
-mv out.md "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
+if [[ -f "out.md" ]]; then
+    mv out.md "${__LOGDIR}/${__ASN}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
+else
+    echo "No output from mtr.py"
+fi

@@ -1,7 +1,10 @@
 version: "3.9"
 services:
   pinger:
-    build: .
+    build:
+      context: .
+      args:
+        TIME_ZONE: "${TIME_ZONE:-Asia/Kolkata}"
     restart: unless-stopped
     container_name: "Pinger"
     network_mode: host

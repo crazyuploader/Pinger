@@ -42,8 +42,8 @@ def do_mtr(SERVER):
     return ""
 
 
-TO_WRITE = ""
 for SERVER in SERVERS:
+    TO_WRITE = ""
     print("MTR for", SERVER)
     print("---\n")
     MTR = do_mtr(SERVER)
@@ -54,7 +54,6 @@ for SERVER in SERVERS:
         TO_WRITE += f"### MTR for {SERVER}\n"
         TO_WRITE += "---\n\n"
         TO_WRITE += f"```\n{MTR}\n```\n\n"
+        with open("out.md", "a") as final:
+            final.write(TO_WRITE)
     print("")
-
-with open("out.md", "w") as final:
-    final.write(TO_WRITE)
