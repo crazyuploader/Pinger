@@ -20,4 +20,4 @@ services:
       - "${HOST:-127.0.0.1}:${PORT:-8080}:80"
       - "${HOST:-127.0.0.1}:35729:35729"
     volumes:
-      - "${PWD}/out/docker:/markdown:ro"
+      - "${PWD}/out:/markdown:ro"
