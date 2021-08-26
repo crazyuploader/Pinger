@@ -30,7 +30,8 @@ if [[ ! -d "${__LOGDIR}/${__ASN}/${YEAR}/${MONTH}/${DAY}" ]]; then
     mkdir -p "${__LOGDIR}/${__ASN}/${YEAR}/${MONTH}/${DAY}"
 fi
 
-"$__DIR"/mtr.py
+echo "Running mtr.py at: ${TIME}"
+"$__DIR"/mtr.py > /dev/null 2>&1
 if [[ -f "out.md" ]]; then
     mv out.md "${__LOGDIR}/${__ASN}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
 else
