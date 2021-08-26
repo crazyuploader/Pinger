@@ -9,7 +9,7 @@ services:
     container_name: "Pinger"
     network_mode: host
     volumes:
-      - "${PWD}/out/docker:/var/pinger"
+      - "${PWD}/out:/var/pinger"
     environment:
       CRON_MINUTES: "${CRON_MINUTES}"
   server:
