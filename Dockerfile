@@ -11,6 +11,7 @@ RUN apk --no-cache --update add \
     alpine-conf \
     bind-tools \
     bash \
+    coreutils \
     python3
 
 # Setting TimeZone to IST
