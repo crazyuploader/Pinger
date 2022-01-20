@@ -51,7 +51,7 @@ for SERVER in SERVERS:
         pass
     else:
         print(MTR)
-        TO_WRITE += f"### MTR for {SERVER}\n"
+        TO_WRITE += f"## MTR for {SERVER}\n"
         TO_WRITE += "---\n\n"
         TO_WRITE += f"```\n{MTR}\n```\n\n"
     print("")
