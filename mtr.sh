@@ -30,5 +30,6 @@ if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
 fi
 
 "$__DIR"/mtr.py
-cp out.md "${__LOGDIR}"/latest.md
+echo -e "# As of -> \`$(date --rfc-3339=ns)\`\n" > "${__LOGDIR}"/latest.md
+cat out.md >> "${__LOGDIR}"/latest.md
 mv out.md "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
