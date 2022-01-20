@@ -30,4 +30,5 @@ if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
 fi
 
 "$__DIR"/mtr.py
+cp out.md "${__LOGDIR}/latest.md
 mv out.md "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
