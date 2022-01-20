@@ -3,7 +3,7 @@
 # Script to create cron for X minute(s)
 
 if [[ -z "${CRON_MINUTES}" ]]; then
-    echo "Cron minute(s) Environment Variable 'CRON_MINUTES' is not defined, using default of 10 minute(s)"
+    echo "Cron minute(s) Environment Variable 'CRON_MINUTES' is not defined, using default of 5 minute(s)"
 else
     echo "Setting up cron every ${CRON_MINUTES:-5} minute(s)"
 fi
