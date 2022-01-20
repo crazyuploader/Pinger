@@ -12,6 +12,7 @@ YEAR=$(date "+%Y")
 MONTH=$(date "+%b")
 DAY=$(date "+%d")
 TIME=$(date "+%H%M")
+CURRENT_TIME="$(date --rfc-3339=seconds)"
 
 if [[ ! -f "${__SERVERS}" ]]; then
     echo "'servers.txt' file not found"
@@ -30,6 +31,6 @@ if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
 fi
 
 "$__DIR"/mtr.py
-echo -e "# As of -> \`$(date --rfc-3339=seconds)\`\n" > "${__LOGDIR}"/latest.md
+echo -e "# As of -> \`${CURRENT_TIME}\`\n" > "${__LOGDIR}"/latest.md
 cat out.md >> "${__LOGDIR}"/latest.md
 mv out.md "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
