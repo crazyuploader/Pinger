@@ -6,7 +6,7 @@ services:
     container_name: "Pinger"
     network_mode: host
     volumes:
-      - "${PWD}/out/docker:/var/pinger"
+      - "${PWD}/out:/var/pinger"
     environment:
       CRON_MINUTES: "${CRON_MINUTES}"
   server:
@@ -17,4 +17,4 @@ services:
       - "${HOST:-127.0.0.1}:${PORT:-8080}:80"
       - "${HOST:-127.0.0.1}:${AUTO_RELOAD_PORT:-8081}:35729"
     volumes:
-      - "${PWD}/out/docker:/markdown:ro"
+      - "${PWD}/out:/markdown:ro"
