@@ -9,3 +9,12 @@ services:
       - "${PWD}/out:/var/pinger"
     environment:
       CRON_MINUTES: "${CRON_MINUTES}"
+  md_server:
+    build:
+      context: markdown_server
+    restart: unless-stopped
+    container_name: "Markdown-Server"
+    volumes:
+      - "${PWD}/out:/srv/algernon"
+    ports:
+      - "${HOST:-127.0.0.1}:${PORT:-8080}:3000"
