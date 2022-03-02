@@ -31,6 +31,6 @@ if [[ ! -d "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}" ]]; then
 fi
 
 "$__DIR"/mtr.py
-echo -e "# As of -> \`${CURRENT_TIME}\`\n\n$(cat out.md)" > out.md
+echo -e "# As of ${CURRENT_TIME}\n\n$(cat out.md)" > out.md
 cp out.md "${__LOGDIR}"/latest.md
 mv out.md "${__LOGDIR}/${YEAR}/${MONTH}/${DAY}/${TIME}".md
