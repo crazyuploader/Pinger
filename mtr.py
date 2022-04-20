@@ -9,6 +9,7 @@ import sys
 from os.path import dirname
 import shlex
 import subprocess
+from datetime import datetime
 
 # Global Variable(s)
 PATH = sys.argv[0]
@@ -16,8 +17,10 @@ __DIR = dirname(PATH)
 __SERVERS = f"{__DIR}/servers.txt"
 SERVERS = []
 
+# Print current time
+print("Running MTR at: ", datetime.now())
+
 # Read server(s) from "servers.txt" file
-print("Reading servers...")
 with open(__SERVERS, "r") as servers:
     servers = servers.readlines()
     for server in servers:
@@ -44,17 +47,15 @@ def do_mtr(SERVER):
 
 TO_WRITE = ""
 for SERVER in SERVERS:
-    print("MTR for", SERVER)
-    print("---\n")
     MTR = do_mtr(SERVER)
     if not MTR:
-        pass
+        print("MTR did not return any output")
     else:
-        print(MTR)
         TO_WRITE += f"## MTR for {SERVER}\n"
         TO_WRITE += "---\n\n"
         TO_WRITE += f"```\n{MTR}\n```\n\n"
-    print("")
 
+TO_WRITE = TO_WRITE.strip()
+TO_WRITE = TO_WRITE + "\n"
 with open("out.md", "w") as final:
     final.write(TO_WRITE)
