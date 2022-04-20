@@ -16,6 +16,11 @@ jobs:
 
       - name: Docker Build
         run: docker build -t crazyuploader/pinger:latest .
+        
+      - name: Docker Compose Run
+        run: |
+          cp .env-example .env
+          docker-compose up --detach
 
       - name: Run ShellCheck
         run: shellcheck *.sh
