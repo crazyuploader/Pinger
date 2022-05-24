@@ -2,7 +2,7 @@
 # Created by Jugal Kishore -- 2021
 #
 # Using Base Image: Alpine
-FROM alpine:3.15.4
+FROM alpine:3.16.0
 
 # Adding Required Package(s)
 RUN apk --no-cache --update add \
