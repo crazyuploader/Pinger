@@ -4,7 +4,7 @@
 # Markdown Server based on https://github.com/xyproto/algernon
 #
 # Base Image: alpine:3.15
-FROM alpine:3.16 AS builder
+FROM alpine:3.17 AS builder
 
 # Setting Algernon Version
 ARG ALGERNON_VERSION=1.14.0
