@@ -7,7 +7,7 @@
 FROM alpine:3.18 AS builder
 
 # Setting Algernon Version
-ARG ALGERNON_VERSION=1.14.0
+ARG ALGERNON_VERSION=1.15.1
 
 # Adding curl
 RUN apk --no-cache add curl
