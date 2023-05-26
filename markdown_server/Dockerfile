@@ -59,4 +59,4 @@ EXPOSE 3000
 # Entrypoint
 #
 # Serve /srv/algernon directory with Algernon on port 3000 with HTTP only
-ENTRYPOINT [ "algernon", "--server", "--addr", ":3000", "--httponly", "/srv/algernon" ]
+ENTRYPOINT [ "algernon", "--simple", "--addr", ":3000", "--httponly", "/srv/algernon" ]
