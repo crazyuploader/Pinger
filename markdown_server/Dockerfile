@@ -3,11 +3,11 @@
 #
 # Markdown Server based on https://github.com/xyproto/algernon
 #
-# Base Image: alpine:3.18
+# Base Image: alpine:3.23.1-alpine
 FROM golang:1.23.1-alpine AS builder
 
 # Setting Algernon Version
-ARG ALGERNON_VERSION=v1.15.1
+ARG ALGERNON_VERSION=v1.17.1
 
 # Adding curl
 RUN apk --no-cache add git
@@ -26,7 +26,7 @@ RUN go build -o algernon . && \
     mv algernon /usr/bin/algernon
 
 # Compress Algernon binaries
-RUN if [[ $(arch) == "x86_64" ]]; then apk add upx; upx /usr/bin/algernon; fi
+RUN if [ "$(arch)" = "x86_64" ]; then apk add --no-cache upx; upx /usr/bin/algernon; fi
 
 # Clean up /tmp directory
 RUN rm -rf /tmp/*
